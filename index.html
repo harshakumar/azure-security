@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SC-900 Study Hub</title>
+<style>
+  :root{
+    --bg1:#0f1225;
+    --bg2:#1b1f3b;
+    --accent:#7c5cff;
+    --accent2:#00d1b2;
+    --card-bg:#1e2140;
+    --text:#f4f4fb;
+    --muted:#a9adc9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(circle at 20% 20%, var(--bg2), var(--bg1) 70%);
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:48px 16px 60px;
+  }
+  h1{
+    font-size:2rem;
+    margin:0 0 6px;
+    text-align:center;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .subtitle{
+    color:var(--muted);
+    font-size:0.95rem;
+    margin-bottom:40px;
+    text-align:center;
+  }
+  .section{
+    width:100%;
+    max-width:720px;
+    margin-bottom:36px;
+  }
+  .section-title{
+    font-size:1.05rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:14px;
+    padding-bottom:6px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .link-grid{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .link-card{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background:linear-gradient(145deg, var(--card-bg), #262a52);
+    border:1px solid rgba(124,92,255,0.25);
+    border-radius:12px;
+    padding:16px 20px;
+    text-decoration:none;
+    color:var(--text);
+    transition:transform .15s, border-color .15s, background .15s;
+  }
+  .link-card:hover{
+    transform:translateY(-2px);
+    border-color:rgba(0,209,178,0.5);
+    background:linear-gradient(145deg, #262a52, #2c3060);
+  }
+  .link-card .label{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .link-card .title{
+    font-size:1.05rem;
+    font-weight:600;
+  }
+  .link-card .desc{
+    font-size:0.82rem;
+    color:var(--muted);
+  }
+  .arrow{
+    font-size:1.3rem;
+    color:var(--accent2);
+  }
+  .empty-note{
+    color:var(--muted);
+    font-size:0.85rem;
+    font-style:italic;
+    padding:14px 20px;
+    border:1px dashed rgba(255,255,255,0.15);
+    border-radius:12px;
+  }
+  .footer-note{
+    margin-top:10px;
+    font-size:0.75rem;
+    color:var(--muted);
+    text-align:center;
+    max-width:600px;
+  }
+</style>
+</head>
+<body>
+
+<h1>SC-900 Study Hub</h1>
+<div class="subtitle">Microsoft Security, Compliance &amp; Identity Fundamentals — all your study materials in one place</div>
+
+<div class="section">
+  <div class="section-title">Flash Cards</div>
+  <div class="link-grid">
+    <a class="link-card" href="/sc900/SC-900-Flashcards.html">
+      <div class="label">
+        <span class="title">SC-900 Flashcards (100 cards)</span>
+        <span class="desc">Click-to-flip cards covering Zero Trust, Entra ID, Defender, Sentinel, and Purview</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    <!-- Add more flashcard decks here, for example:
+    <a class="link-card" href="SC-900_Flashcards_Part2.html">
+      <div class="label">
+        <span class="title">SC-900 Flashcards — Part 2</span>
+        <span class="desc">Description of this deck</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    -->
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">Sample Exams</div>
+  <div class="link-grid" id="examGrid">
+    <div class="empty-note">No sample exams added yet. Add a link here once a practice exam file is created.</div>
+    <!-- Add sample exam links here, for example:
+    <a class="link-card" href="SC-900_Practice_Exam_1.html">
+      <div class="label">
+        <span class="title">Practice Exam 1</span>
+        <span class="desc">50 timed multiple-choice questions</span>
+      </div>
+      <span class="arrow">→</span>
+    </a>
+    -->
+  </div>
+</div>
+
+<div class="footer-note">
+  Keep this index.html in the same folder as your flashcard and exam files, then just add a new &lt;a class="link-card"&gt; entry whenever you add a new file.
+</div>
+
+</body>
+</html>
