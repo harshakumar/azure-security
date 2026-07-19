@@ -1,0 +1,1 @@
+Disclaimer: This repository contains AI-generated practice questions and study notes for educational purposes. They are not actual Microsoft certification exam questions. Always verify information with Microsoft Learn and official documentation.
