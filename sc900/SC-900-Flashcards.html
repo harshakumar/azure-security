@@ -16,19 +16,23 @@
     --muted:#a9adc9;
   }
   *{box-sizing:border-box;}
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{
     margin:0;
     min-height:100vh;
+    min-height:100dvh;
     font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
     background:radial-gradient(circle at 20% 20%, var(--bg2), var(--bg1) 70%);
     color:var(--text);
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:24px 16px 60px;
+    width:100%;
+    overflow-x:hidden;
+    padding:clamp(16px,4vw,24px) clamp(12px,4vw,16px) 60px;
   }
   h1{
-    font-size:1.6rem;
+    font-size:clamp(1.25rem,4.5vw,1.6rem);
     margin:8px 0 2px;
     text-align:center;
     background:linear-gradient(90deg,var(--accent),var(--accent2));
@@ -38,9 +42,10 @@
   }
   .subtitle{
     color:var(--muted);
-    font-size:0.9rem;
+    font-size:clamp(0.78rem,2.5vw,0.9rem);
     margin-bottom:18px;
     text-align:center;
+    padding:0 6px;
   }
   .toolbar{
     display:flex;
@@ -48,16 +53,20 @@
     flex-wrap:wrap;
     justify-content:center;
     margin-bottom:18px;
+    width:100%;
+    max-width:560px;
   }
   .toolbar button{
     background:rgba(255,255,255,0.08);
     border:1px solid rgba(255,255,255,0.15);
     color:var(--text);
-    padding:8px 14px;
+    padding:10px 14px;
     border-radius:8px;
     font-size:0.85rem;
     cursor:pointer;
     transition:background .2s, transform .1s;
+    touch-action:manipulation;
+    min-height:40px;
   }
   .toolbar button:hover{ background:rgba(255,255,255,0.16); }
   .toolbar button:active{ transform:scale(0.96); }
@@ -89,9 +98,10 @@
   .scene{
     width:100%;
     max-width:560px;
-    height:340px;
+    height:clamp(240px, 42vh, 340px);
     perspective:1400px;
     margin-bottom:22px;
+    touch-action:manipulation;
   }
   .card{
     position:relative;
@@ -100,6 +110,7 @@
     transform-style:preserve-3d;
     transition:transform 0.6s cubic-bezier(.4,.2,.2,1);
     cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
   }
   .card.flipped{
     transform:rotateY(180deg);
@@ -108,14 +119,16 @@
     position:absolute;
     inset:0;
     backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
     border-radius:18px;
-    padding:32px;
+    padding:clamp(18px,5vw,32px);
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     box-shadow:0 12px 30px rgba(0,0,0,0.35);
+    overflow-y:auto;
   }
   .front{
     background:linear-gradient(145deg, var(--card-front), #262a52);
@@ -128,48 +141,57 @@
   }
   .face-label{
     position:absolute;
-    top:14px;
-    left:18px;
-    font-size:0.7rem;
+    top:12px;
+    left:14px;
+    font-size:0.68rem;
     letter-spacing:1.5px;
     text-transform:uppercase;
     color:rgba(255,255,255,0.55);
   }
   .card-number{
     position:absolute;
-    top:14px;
-    right:18px;
-    font-size:0.7rem;
+    top:12px;
+    right:14px;
+    font-size:0.68rem;
     color:rgba(255,255,255,0.55);
   }
   .face p{
-    font-size:1.15rem;
+    font-size:clamp(0.95rem,3.6vw,1.15rem);
     line-height:1.5;
     margin:0;
+    max-width:100%;
   }
   .back p{
-    font-size:1.05rem;
+    font-size:clamp(0.9rem,3.4vw,1.05rem);
   }
   .hint{
     margin-top:18px;
-    font-size:0.78rem;
+    font-size:0.75rem;
     color:rgba(255,255,255,0.45);
   }
   .nav-row{
     display:flex;
     gap:14px;
     align-items:center;
+    justify-content:center;
     margin-bottom:8px;
+    width:100%;
+    max-width:560px;
+    flex-wrap:wrap;
   }
   .nav-btn{
     background:var(--accent);
     border:none;
     color:white;
     font-size:0.95rem;
-    padding:10px 20px;
+    padding:12px 22px;
     border-radius:10px;
     cursor:pointer;
     transition:background .2s, transform .1s;
+    touch-action:manipulation;
+    min-height:44px;
+    flex:1 1 auto;
+    max-width:200px;
   }
   .nav-btn:hover{ background:#6b4de0; }
   .nav-btn:active{ transform:scale(0.96); }
@@ -180,18 +202,28 @@
   .jump{
     display:flex;
     align-items:center;
+    flex-wrap:wrap;
+    justify-content:center;
     gap:6px;
     font-size:0.85rem;
     color:var(--muted);
+    width:100%;
+    max-width:560px;
+    text-align:center;
   }
   .jump input{
     width:60px;
-    padding:6px 8px;
+    padding:8px 8px;
     border-radius:6px;
     border:1px solid rgba(255,255,255,0.2);
     background:rgba(255,255,255,0.06);
     color:var(--text);
     text-align:center;
+    font-size:16px; /* prevents iOS auto-zoom on focus */
+  }
+  .jump button{
+    touch-action:manipulation;
+    min-height:36px;
   }
   .footer-note{
     margin-top:18px;
@@ -199,6 +231,7 @@
     color:var(--muted);
     text-align:center;
     max-width:560px;
+    padding:0 8px;
   }
   kbd{
     background:rgba(255,255,255,0.12);
@@ -206,9 +239,33 @@
     border-radius:4px;
     font-size:0.75rem;
   }
-  @media (max-width:480px){
-    .scene{ height:400px; }
-    .face p{ font-size:1rem; }
+
+  /* ---------- Responsive breakpoints ---------- */
+  @media (max-width:600px){
+    .nav-btn{ padding:12px 16px; font-size:0.9rem; }
+    .toolbar button{ font-size:0.8rem; padding:9px 12px; }
+    .face{ border-radius:14px; }
+  }
+  @media (max-width:400px){
+    .nav-row{ gap:10px; }
+    .nav-btn{ min-width:110px; }
+    h1{ font-size:1.15rem; }
+  }
+  /* Short / landscape screens (phones rotated) */
+  @media (max-height:500px) and (orientation:landscape){
+    body{ padding-top:12px; }
+    h1{ font-size:1.05rem; margin:2px 0; }
+    .subtitle{ margin-bottom:10px; font-size:0.75rem; }
+    .toolbar{ margin-bottom:10px; }
+    .scene{ height:clamp(160px,60vh,260px); margin-bottom:12px; }
+    .face{ padding:14px; }
+    .face p{ font-size:0.85rem; }
+    .footer-note{ display:none; }
+  }
+  /* Larger desktop screens: allow the card to breathe a bit more */
+  @media (min-width:900px){
+    .scene{ max-width:620px; height:380px; }
+    .progress-wrap, .nav-row, .jump, .footer-note{ max-width:620px; }
   }
 </style>
 </head>

@@ -15,19 +15,23 @@
     --muted:#a9adc9;
   }
   *{box-sizing:border-box;}
+  html{ -webkit-text-size-adjust:100%; text-size-adjust:100%; }
   body{
     margin:0;
     min-height:100vh;
+    min-height:100dvh;
     font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
     background:radial-gradient(circle at 20% 20%, var(--bg2), var(--bg1) 70%);
     color:var(--text);
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:48px 16px 60px;
+    width:100%;
+    overflow-x:hidden;
+    padding:clamp(28px,7vw,48px) clamp(14px,4vw,16px) 60px;
   }
   h1{
-    font-size:2rem;
+    font-size:clamp(1.4rem,5.5vw,2rem);
     margin:0 0 6px;
     text-align:center;
     background:linear-gradient(90deg,var(--accent),var(--accent2));
@@ -37,17 +41,18 @@
   }
   .subtitle{
     color:var(--muted);
-    font-size:0.95rem;
-    margin-bottom:40px;
+    font-size:clamp(0.8rem,2.8vw,0.95rem);
+    margin-bottom:clamp(24px,6vw,40px);
     text-align:center;
+    padding:0 8px;
   }
   .section{
     width:100%;
     max-width:720px;
-    margin-bottom:36px;
+    margin-bottom:clamp(24px,6vw,36px);
   }
   .section-title{
-    font-size:1.05rem;
+    font-size:clamp(0.9rem,3vw,1.05rem);
     letter-spacing:1px;
     text-transform:uppercase;
     color:var(--muted);
@@ -64,39 +69,49 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:12px;
     background:linear-gradient(145deg, var(--card-bg), #262a52);
     border:1px solid rgba(124,92,255,0.25);
     border-radius:12px;
-    padding:16px 20px;
+    padding:clamp(14px,3.5vw,16px) clamp(16px,4vw,20px);
     text-decoration:none;
     color:var(--text);
     transition:transform .15s, border-color .15s, background .15s;
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent;
+    min-height:44px;
   }
   .link-card:hover{
     transform:translateY(-2px);
     border-color:rgba(0,209,178,0.5);
     background:linear-gradient(145deg, #262a52, #2c3060);
   }
+  .link-card:active{
+    transform:scale(0.98);
+  }
   .link-card .label{
     display:flex;
     flex-direction:column;
     gap:2px;
+    min-width:0;
   }
   .link-card .title{
-    font-size:1.05rem;
+    font-size:clamp(0.95rem,3.2vw,1.05rem);
     font-weight:600;
   }
   .link-card .desc{
-    font-size:0.82rem;
+    font-size:clamp(0.75rem,2.6vw,0.82rem);
     color:var(--muted);
+    line-height:1.4;
   }
   .arrow{
     font-size:1.3rem;
     color:var(--accent2);
+    flex-shrink:0;
   }
   .empty-note{
     color:var(--muted);
-    font-size:0.85rem;
+    font-size:clamp(0.78rem,2.6vw,0.85rem);
     font-style:italic;
     padding:14px 20px;
     border:1px dashed rgba(255,255,255,0.15);
@@ -108,6 +123,22 @@
     color:var(--muted);
     text-align:center;
     max-width:600px;
+    padding:0 10px;
+  }
+
+  /* ---------- Responsive breakpoints ---------- */
+  @media (max-width:480px){
+    .link-card{
+      flex-direction:row;
+      align-items:flex-start;
+    }
+    .link-card .desc{ display:block; }
+  }
+  @media (max-width:360px){
+    .link-card .desc{ display:none; } /* keep very small screens uncluttered */
+  }
+  @media (min-width:900px){
+    .section, .link-grid{ max-width:760px; }
   }
 </style>
 </head>
@@ -119,7 +150,7 @@
 <div class="section">
   <div class="section-title">Flash Cards</div>
   <div class="link-grid">
-    <a class="link-card" href="/azure-security/sc900/SC-900-Flashcards.html">
+    <a class="link-card" href="SC-900_Flashcards.html">
       <div class="label">
         <span class="title">SC-900 Flashcards (100 cards)</span>
         <span class="desc">Click-to-flip cards covering Zero Trust, Entra ID, Defender, Sentinel, and Purview</span>
@@ -154,6 +185,9 @@
   </div>
 </div>
 
+<div class="footer-note">
+  Keep this index.html in the same folder as your flashcard and exam files, then just add a new &lt;a class="link-card"&gt; entry whenever you add a new file.
+</div>
 
 </body>
 </html>
